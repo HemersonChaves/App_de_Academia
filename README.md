@@ -68,6 +68,119 @@ Para o cliente visualizar os seus treinos, basta os mesmo logar no sistema e aut
 
 Busca por seus cliente/alunos para q possa criar suas lista de treinos. Os treinos podem ser configurado para uma quantidade de dias da semana entre 1 e 7. É disponibilizado uma lista pre cadastrada de aparelhos e treinos para seleção dos treinos. O treinador pode acompanhar as execuções de treino dos seus alunos.
 
+## Metas
+
+O sistema deve ser um website podendo ser acessada por qualquer navegador moderno. Com visualização distintas para cliente e treinadores. O sistema tem com o proposito de organizar treinos especifico para cada usuário/cliente formulados por seu treinador. Também deve conter uma área para clientes e uma área separada para o treinador. Sendo que a área do treinador deve ser possível ver todos os seus clientes e controlar as especificidades dos treinos dos mesmo. Os treino deve ser cadastrado em banco de dados e disponibilizado de forma de lista para a seleção dos treinos. O cliente deve ser capaz de logar no sistema para visualizar os treinos individuais preparados pra a sua semana. O treino deve ter informações de aparelho e de execução, assim como, a opção de marca o treino com feito.
+
+Requisitos Funcionais
+
+- RF001
+    
+   [] A aplicação deve permitir que o usuário efetue o login mediante as suas credenciais
+    
+- RF002
+    
+   [] A aplicação deve permitir o logout de sua conta
+    
+- RF003
+    
+    [] A aplicação deve ter uma áreas diferentes para o cliente, treinador e admin
+    
+- RF004
+    
+    [] A aplicação deve permitir que o treinador visualizar quais os clientes estão vinculados a ele  
+    
+- RF005
+    
+    [] A aplicação deve ser possível visualizar todos os treinos e buscar os mesmo por nome, musculatura e aparelho
+    
+- RF006
+    
+    [] A aplicação deve permitir que seja feitos novos cadastros de rotinas de exercícios. 
+    
+- RF007
+    
+    [] A aplicação deve permitir que o treinador visualize o histórico de treinos de seus clientes.
+    
+- RF008
+    
+    [] A aplicação dever permitir que treinador busque seus clientes. Por dia da semana, nome de cliente
+    
+- RF009
+    
+    [] A aplicação deve permitir adicionar novas rotinas treinos específicos para cada cliente de acordo com suas rotina de treinos (dias da semana quem ele treina).
+    
+- RF010
+    
+    [] O sistema deve possuir uma visualização de treinos para o dia especifico do cliente ou uma pre visualização da semana
+    
+- RF011
+    
+    [] A aplicação deve conter uma opção de confirmação de treino realizado ou pular treino. Caso o cliente nao tenha marcado nada o treino deve ser marcado com não realizado
+    
+- RF012
+    
+    [] A aplicação deve da um indicativo de conclusão do treino (exercício restante)
+    
+- RF0012
+    
+    [] A aplicação deve permitir a visualização dos histórico de treinos pelo cliente
+    
+
+Regras de negocio
+
+- RN001
+    
+    [] Os treinos dever ter as informações de series, repetição, carga, descanso e uma opcional observação.
+    
+- RN002
+    
+    [] So deve ser possível cadastrar um conjunto de treinos por dia para ser feito pelo cliente
+    
+- RN003
+    
+    [] O exercício deve conter nome, musculatura trabalhada(grupo A, B, C, D), aparelho e esquema de como ser realizado.
+    Caso de uso cliente
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b4e9028-c105-4746-a15c-540337c0f510/Untitled.png)
+
+Caso de uso treinador
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7f5d3ea4-bcde-498a-aa8f-d49d4bd7948e/Untitled.png)
+
+Dicionários de dados
+
+- cliente
+    - nome *string*
+    - cpf *string*
+    - nascimento *date*
+    - endereço *Endereço*
+- Endereço
+    - rua *string*
+    - bairro *string*
+    - numero *string*
+    - CEP string
+    - cidade *string*
+    - estado *string*
+- treinador
+    - clientes
+    - nome *string*
+    - cpf *string*
+    - nascimento *date*
+    - endereço *Endereço*
+- treino
+    - dias semana *string*
+    - exercício *string*
+    - observações *string*
+    - feito *boolean*
+    - treinador *Treinador*
+    - cliente *Cliente*
+- exercício
+    - series *string*
+    - carga *string*
+    - repetições *string*
+    - descanso *string*
+    - grupo muscular *string*
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
