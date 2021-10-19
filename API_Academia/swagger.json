@@ -1,534 +1,241 @@
 {
-    "openapi": "3.1.0",
-    "info": {
-      "title": "App Academia API",
-      "version": "1.0",
-      "description": "API que fornece dados para gerenciamento de treinos do App de academia.",
-      "contact": {
-        "name": "Hemerson Chaves email:hemersonchaves20@hotmail.com",
-        "email": "hemersonchaves20@hotmail.com"
-      }
+  "openapi": "3.1.0",
+  "info": {
+    "title": "App Academia API",
+    "version": "1.0",
+    "description": "API que fornece dados para gerenciamento de treinos do App de academia.",
+    "contact": {
+      "name": "Hemerson Chaves email:hemersonchaves20@hotmail.com",
+      "email": "hemersonchaves20@hotmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/api",
+      "description": "Localhost"
+    }
+  ],
+  "tags": [
+    {
+      "name": "cliente",
+      "description": "Acesso aos dados do clientes"
     },
-    "servers": [
-      {
-        "url": "http://localhost:3333/api",
-        "description": "Localhost"
-      }
-    ],
-    "tags": [
-      {
-        "name": "cliente",
-        "description": "Acesso aos dados do clientes"
-      },
-      {
-        "name": "treino",
-        "description": "Acesso aos dados de treino"
-      },
-      {
-        "name": "treinador",
-        "description": "Acesso aos dados de treinodor"
-      }
-    ],
-    "paths": {
-      "/clientes": {
-        "get": {
-          "summary": "Lista todos os clientes",
-          "tags": [
-            "cliente"
-          ],
-          "responses": {
-            "200": {
-              "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de clientes",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Cliente"
-                    }
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos. "
-            },
-            "404": {
-              "description": "O objeto que você solicitou não existe. A respoata estará vazia."
-            },
-            "500": {
-              "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
-            }
-          },
-          "operationId": "get-clientes",
-          "description": "Retorna uma resposta com sucesso e um JSON no body contendo Lista todos os clientes",
-          "parameters": [
-            {
-              "schema": {
-                "type": "string"
-              },
-              "in": "header",
-              "name": "id_admin"
-            }
-          ]
-        }
-      },
-      "/clientes/{id}": {
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/id"
-          }
+    {
+      "name": "treino",
+      "description": "Acesso aos dados de treino"
+    },
+    {
+      "name": "treinador",
+      "description": "Acesso aos dados de treinodor"
+    }
+  ],
+  "paths": {
+    "/clientes": {
+      "get": {
+        "summary": "Lista todos os clientes",
+        "tags": [
+          "cliente"
         ],
-        "get": {
-          "summary": "Your GET endpoint",
-          "tags": [
-            "cliente"
-          ],
-          "responses": {
-            "200": {
-              "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com dados do cliente do id repassado"
-            },
-            "400": {
-              "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos. "
-            },
-            "404": {
-              "description": "O objeto que você solicitou não existe. A respoata estará vazia."
-            },
-            "500": {
-              "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
-            }
-          },
-          "operationId": "get-clientes-id",
-          "description": "lista os dados do cliente com id repassado"
-        }
-      },
-      "/clientes/cadastro": {
-        "post": {
-          "summary": "Adiciona um cliente",
-          "tags": [
-            "cliente"
-          ],
-          "responses": {
-            "200": {
-              "description": "OK Resposta com um body JSON com as informações do cliente",
-              "content": {
-                "application/json": {
-                  "schema": {
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de clientes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
                     "$ref": "#/components/schemas/Cliente"
                   }
                 }
               }
-            },
-            "400": {
-              "description": "Bad Request solicitação invalida ou malformatada "
-            },
-            "401": {
-              "description": "Você não forneceu um header válido. O cabeçalho foi omitido ou seu id_admin não era válida. A resposta será vazia."
-            },
-            "500": {
-              "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
             }
           },
-          "operationId": "post-clientes",
-          "description": "Cria um novo cliente",
-          "parameters": [
-            {
-              "$ref": "#/components/parameters/id_admin"
-            }
-          ],
-          "requestBody": {
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos. "
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
+          }
+        },
+        "operationId": "get-clientes",
+        "description": "Retorna uma resposta com sucesso e um JSON no body contendo Lista todos os clientes",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "id_admin"
+          }
+        ]
+      }
+    },
+    "/clientes/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "get": {
+        "summary": "lista os dados do cliente com id repassado",
+        "tags": [
+          "cliente"
+        ],
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com dados do cliente do id repassado"
+          },
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos. "
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
+          }
+        },
+        "operationId": "get-clientes-id",
+        "description": "lista os dados do cliente com id repassado"
+      },
+      "patch": {
+        "summary": "Atualiza dados do cliente",
+        "operationId": "patch-clientes-id",
+        "responses": {
+          "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "nome": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "dataNascimento": {
-                      "type": "string"
-                    },
-                    "cpf": {
-                      "type": "string"
-                    },
-                    "endereco": {
-                      "type": "object",
-                      "properties": {
-                        "rua": {
-                          "type": "string"
-                        },
-                        "bairro": {
-                          "type": "string"
-                        },
-                        "numero": {
-                          "type": "string"
-                        },
-                        "cep": {
-                          "type": "string"
-                        },
-                        "cidade": {
-                          "type": "string"
-                        },
-                        "UF": {
-                          "type": "string"
-                        }
-                      }
-                    }
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          }
+        },
+        "description": "Atualia dados do cliente",
+        "tags": [
+          "cliente"
+        ]
+      }
+    },
+    "/clientes/cadastro": {
+      "post": {
+        "summary": "Adiciona um treinador",
+        "tags": [
+          "cliente"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK Resposta com um body JSON com as informações do treinador",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/treinador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request solicitação invalida ou malformatada "
+          },
+          "401": {
+            "description": "Você não forneceu um header válido. O cabeçalho foi omitido ou seu id_admin não era válida. A resposta será vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
+          }
+        },
+        "operationId": "post-clientes",
+        "description": "Cria um novo cliente",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id_admin"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
                   },
-                  "required": [
-                    "nome",
-                    "email"
-                  ]
-                }
-              }
-            },
-            "description": "JSON com dados do novo cliente"
-          }
-        }
-      },
-      "/clientes/{id}/treinos": {
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/id"
-          }
-        ],
-        "get": {
-          "summary": "Your GET endpoint",
-          "tags": [
-            "cliente",
-            "treino"
-          ],
-          "responses": {
-            "200": {
-              "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treino do cliente",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Treino"
-                    }
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
-            },
-            "404": {
-              "description": "O objeto que você solicitou não existe. A respoata estará vazia."
-            },
-            "500": {
-              "description": "Ocorreu um erro interno no servidor. A resposta estará vazia.",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Treino"
+                  "email": {
+                    "type": "string"
+                  },
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "telefone": {
+                    "type": "string"
+                  },
+                  "data_nascimento": {
+                    "type": "string"
                   }
                 }
               }
             }
           },
-          "operationId": "get-clientes-id-treinos",
-          "description": "lista treinos vinculados ao cliente.",
-          "parameters": []
-        }
-      },
-      "/clientes/{id}/treinos/{data}": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "maxLength": 36,
-              "minLength": 36
-            },
-            "description": "id do cliente"
-          },
-          {
-            "$ref": "#/components/parameters/data"
-          }
-        ],
-        "get": {
-          "summary": "Your GET endpoint",
-          "tags": [
-            "cliente",
-            "treino"
-          ],
-          "responses": {
-            "200": {
-              "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treino do cliente",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Treino"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
-            },
-            "404": {
-              "description": "O objeto que você solicitou não existe. A respoata estará vazia."
-            },
-            "500": {
-              "description": "Ocorreu um erro interno no servidor. A resposta estará vazia.",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Treino"
-                  }
-                }
-              }
-            }
-          },
-          "operationId": "get-clientes-id-treinos_data",
-          "description": "lista treinos vinculados ao cliente.",
-          "parameters": []
-        }
-      },
-      "/clientes/{id}/treinos/hoje": {
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "maxLength": 36,
-              "minLength": 36
-            },
-            "description": "id do cliente"
-          }
-        ],
-        "get": {
-          "summary": "Your GET endpoint",
-          "tags": [
-            "cliente",
-            "treino"
-          ],
-          "responses": {
-            "200": {
-              "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treino do cliente",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Treino"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
-            },
-            "404": {
-              "description": "O objeto que você solicitou não existe. A respoata estará vazia."
-            },
-            "500": {
-              "description": "Ocorreu um erro interno no servidor. A resposta estará vazia.",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Treino"
-                  }
-                }
-              }
-            }
-          },
-          "operationId": "get-clientes-id-treinos-hoje",
-          "description": "lista treinos vinculados ao cliente.",
-          "parameters": []
-        }
-      },
-      "/treinador": {
-        "get": {
-          "summary": "Your GET endpoint",
-          "tags": [
-            "treinador"
-          ],
-          "responses": {
-            "200": {
-              "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treinadores"
-            }
-          },
-          "operationId": "get-treinador",
-          "description": "lista com dados do treinador com id informado"
+          "description": "JSON com dados do novo treinador"
         }
       }
     },
-    "components": {
-      "schemas": {
-        "Cliente": {
-          "title": "Cliente",
-          "type": "object",
-          "examples": [
-            {
-              "id": "872ih0d0231hi3dh98y",
-              "nome": "Fulano da Silva",
-              "cpf": "00000000000",
-              "dataNascimento": "12/12/2021",
-              "email": "seu@email.com",
-              "endereco": {
-                "rua": "Av. principal"
-              }
-            }
-          ],
-          "description": "Modelo dos dados do cliente",
-          "properties": {
-            "id": {
-              "type": "string",
-              "description": "id do cliente",
-              "example": "123e4567-e89b-12d3-a456-426614174000",
-              "minLength": 36,
-              "maxLength": 36
-            },
-            "nome": {
-              "type": "string",
-              "description": "nome do cliente"
-            },
-            "cpf": {
-              "type": "string",
-              "description": "cpf do cliente"
-            },
-            "dataNascimento": {
-              "type": "string",
-              "description": "data de nascimento do cliente"
-            },
-            "email": {
-              "type": "string",
-              "description": "email do cliente"
-            },
-            "endereco": {
-              "type": "object",
-              "description": "endereço do cliente",
-              "properties": {
-                "\"rua\"": {
-                  "type": "string"
+    "/clientes/{id}/treinos": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "get": {
+        "summary": "lista treinos vinculados ao cliente",
+        "tags": [
+          "cliente",
+          "treino"
+        ],
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treino do cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Treino"
+                  }
                 }
               }
             }
           },
-          "required": [
-            "nome",
-            "cpf"
-          ]
-        },
-        "Treino": {
-          "title": "Treino",
-          "type": "object",
-          "description": "Modelo referente aos dados do treino",
-          "examples": [],
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "dia_semana": {
-              "type": "string"
-            },
-            "observacao": {
-              "type": "string"
-            },
-            "feito": {
-              "type": "boolean"
-            },
-            "id_treinador": {
-              "type": "string"
-            },
-            "id_cliente": {
-              "type": "string"
-            },
-            "exercicios": {
-              "type": "array",
-              "items": {
-                "type": "array",
-                "items": {}
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Treino"
+                }
               }
             }
           }
         },
-        "treinador": {
-          "title": "Treinador",
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "nome": {
-              "type": "string"
-            },
-            "cpf": {
-              "type": "string"
-            },
-            "nascimento": {
-              "type": "string"
-            },
-            "": {
-              "type": "string"
-            }
-          },
-          "description": "Modelo com dados do treinador"
-        },
-        "Exercicio": {
-          "title": "Exercicio",
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "carga": {
-              "type": "string"
-            },
-            "repeticao": {
-              "type": "string"
-            },
-            "descanco": {
-              "type": "string"
-            },
-            "grupo": {
-              "type": "string"
-            }
-          },
-          "description": "Modelo com dados do Treinador"
-        },
-        "Endereco": {
-          "title": "Endereco",
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "rua": {
-              "type": "string"
-            },
-            "bairro": {
-              "type": "string"
-            },
-            "numero": {
-              "type": "string"
-            },
-            "cep": {
-              "type": "string"
-            },
-            "cidade": {
-              "type": "string"
-            },
-            "estado": {
-              "type": "string"
-            }
-          },
-          "description": "Dados com endereco"
-        }
-      },
-      "securitySchemes": {},
-      "examples": {},
-      "parameters": {
-        "id": {
+        "operationId": "get-clientes-id-treinos",
+        "description": "lista treinos vinculados ao cliente.",
+        "parameters": []
+      }
+    },
+    "/clientes/{id}/treinos/{data}": {
+      "parameters": [
+        {
           "name": "id",
           "in": "path",
           "required": true,
@@ -539,60 +246,536 @@
           },
           "description": "id do cliente"
         },
-        "id_treinador": {
-          "name": "id_treinador",
-          "in": "header",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "description": "id do treinador"
-        },
-        "id_admin": {
-          "name": "id_admin",
-          "in": "header",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "description": "id do administrador"
-        },
-        "data": {
-          "name": "data",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "description": "período da consulta"
+        {
+          "$ref": "#/components/parameters/data"
         }
-      },
-      "responses": {
-        "cliente": {
-          "description": "Example response",
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  }
+      ],
+      "get": {
+        "summary": "lista treinos vinculados ao cliente por data",
+        "tags": [
+          "cliente",
+          "treino"
+        ],
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treino do cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Treino"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Treino"
                 }
               }
             }
           }
+        },
+        "operationId": "get-clientes-id-treinos_data",
+        "description": "lista treinos vinculados ao cliente.",
+        "parameters": []
+      }
+    },
+    "/clientes/{id}/treinos/hoje": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "maxLength": 36,
+            "minLength": 36
+          },
+          "description": "id do cliente"
+        }
+      ],
+      "get": {
+        "summary": "lista treinos vinculados ao cliente do dia de hoje",
+        "tags": [
+          "cliente",
+          "treino"
+        ],
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treino do cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Treino"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Treino"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-clientes-id-treinos-hoje",
+        "description": "lista treinos vinculados ao cliente.",
+        "parameters": []
+      }
+    },
+    "/treinador": {
+      "get": {
+        "summary": "lista todos os treinadores",
+        "tags": [
+          "treinador"
+        ],
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treinadores",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/treinador"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
+          }
+        },
+        "operationId": "get-treinador",
+        "description": "lista com dados do treinador com id informado"
+      }
+    },
+    "/treinador/cadastro": {
+      "post": {
+        "summary": "",
+        "operationId": "post-treinador---copy",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
         }
       },
-      "requestBodies": {
-        "Novo-cliente": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object"
+      "parameters": []
+    },
+    "/treinador/{id}": {
+      "get": {
+        "summary": "lista os dados do treinador com id informado",
+        "tags": [
+          "treinador"
+        ],
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treinadores",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/treinador"
+                }
               }
+            }
+          },
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
+          }
+        },
+        "operationId": "get-treinador-id",
+        "description": "lista com dados do treinador com id informado"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "id do treinador"
+        }
+      ]
+    },
+    "/treinador/{id}/clientes": {
+      "get": {
+        "summary": "lista os dados do treinador com id informado",
+        "tags": [
+          "treinador"
+        ],
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treinadores",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/treinador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
+          }
+        },
+        "operationId": "get-treinador-clientes",
+        "description": "lista com dados dados dos clientes do treinador com id informado"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "id do treinador"
+        }
+      ]
+    },
+    "/treino": {
+      "get": {
+        "summary": "Lista os exercícios",
+        "tags": [
+          "treino"
+        ],
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treinos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Treino"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
+          },
+          "404": {
+            "description": "O objeto que você solicitou não existe. A respoata estará vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
+          }
+        },
+        "operationId": "get-treino",
+        "description": "Lista os exercícios",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id_treinador"
+          }
+        ]
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-treino",
+        "responses": {
+          "200": {
+            "description": "A solicitão realizada com sucesso. A resposta contem um body JSON com lista de treinos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Treino"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetro inválido. Solicitação inválida e/ou mal formada. A resposta conterá um objeto JSON de erros com os erros específicos."
+          },
+          "401": {
+            "description": "Você não forneceu um header válido. O cabeçalho foi omitido ou seu id_admin não era válida. A resposta será vazia."
+          },
+          "500": {
+            "description": "Ocorreu um erro interno no servidor. A resposta estará vazia."
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id_treinador"
+          }
+        ],
+        "description": "Cadastro de exercício",
+        "tags": [
+          "treino"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Cliente": {
+        "title": "Cliente",
+        "type": "object",
+        "examples": [
+          {
+            "id": "872ih0d0231hi3dh98y",
+            "nome": "Fulano da Silva",
+            "cpf": "00000000000",
+            "dataNascimento": "12/12/2021",
+            "email": "seu@email.com",
+            "endereco": {
+              "rua": "Av. principal"
+            }
+          }
+        ],
+        "description": "Modelo dos dados do cliente",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "id do cliente",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "minLength": 36,
+            "maxLength": 36
+          },
+          "nome": {
+            "type": "string",
+            "description": "nome do cliente"
+          },
+          "cpf": {
+            "type": "string",
+            "description": "cpf do cliente"
+          },
+          "dataNascimento": {
+            "type": "string",
+            "description": "data de nascimento do cliente"
+          },
+          "email": {
+            "type": "string",
+            "description": "email do cliente"
+          },
+          "endereco": {
+            "type": "object",
+            "description": "endereço do cliente",
+            "properties": {
+              "\"rua\"": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "nome",
+          "cpf"
+        ]
+      },
+      "Treino": {
+        "title": "Treino",
+        "type": "object",
+        "description": "Modelo referente aos dados do treino",
+        "examples": [],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "dia_semana": {
+            "type": "string"
+          },
+          "observacao": {
+            "type": "string"
+          },
+          "feito": {
+            "type": "boolean"
+          },
+          "id_treinador": {
+            "type": "string"
+          },
+          "id_cliente": {
+            "type": "string"
+          },
+          "exercicios": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {}
+            }
+          }
+        }
+      },
+      "treinador": {
+        "title": "Treinador",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string"
+          },
+          "nascimento": {
+            "type": "string"
+          },
+          "": {
+            "type": "string"
+          }
+        },
+        "description": "Modelo com dados do treinador"
+      },
+      "Exercicio": {
+        "title": "Exercicio",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "carga": {
+            "type": "string"
+          },
+          "repeticao": {
+            "type": "string"
+          },
+          "descanco": {
+            "type": "string"
+          },
+          "grupo": {
+            "type": "string"
+          }
+        },
+        "description": "Modelo com dados do Treinador"
+      },
+      "Endereco": {
+        "title": "Endereco",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "rua": {
+            "type": "string"
+          },
+          "bairro": {
+            "type": "string"
+          },
+          "numero": {
+            "type": "string"
+          },
+          "cep": {
+            "type": "string"
+          },
+          "cidade": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "string"
+          }
+        },
+        "description": "Dados com endereco"
+      }
+    },
+    "securitySchemes": {},
+    "examples": {},
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "maxLength": 36,
+          "minLength": 36
+        },
+        "description": "id do cliente"
+      },
+      "id_treinador": {
+        "name": "id_treinador",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "id do treinador"
+      },
+      "id_admin": {
+        "name": "id_admin",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "id do administrador"
+      },
+      "data": {
+        "name": "data",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "período da consulta"
+      }
+    },
+    "responses": {
+      "Treinador": {
+        "description": "Example response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/treinador"
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "Novo-cliente": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object"
             }
           }
         }
       }
     }
   }
+}
