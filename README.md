@@ -183,8 +183,23 @@ Dicionários de dados
     - grupo muscular *string*
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Rotas API
 
-
+| Método | Path | URL |
+| --- | --- | --- |
+| GET | /clientes | http://127.0.0.1:3100/clientes |
+| GET | /clientes/{id} | http://127.0.0.1:3100/clientes/{id} |
+| PATCH | /clientes/{id}  | http://127.0.0.1:3100/clientes/{id} |
+| POST | /clientes/cadastro  | http://127.0.0.1:3100/clientes/cadastro |
+| GET | /clientes/{id}/treinos | http://127.0.0.1:3100/clientes/{id}/treinos |
+| GET | /clientes/{id}/treinos/{data} | http://127.0.0.1:3100/clientes/{id}/treinos/{data} |
+| GET | /clientes/{id}/treinos/hoje | http://127.0.0.1:3100/clientes/{id}/treinos/hoje |
+| GET | /treinador  | http://127.0.0.1:3100/treinador |
+| POST | /treinador  | http://127.0.0.1:3100/treinador/cadastro |
+| GET | /treinador/{id} | http://127.0.0.1:3100/treinador/{id} |
+| GET | /treinador/{id}/clientes | http://127.0.0.1:3100/treinador/{id}/clientes |
+| GET | /treino | http://127.0.0.1:3100/treino |
+| POST | /treino  | http://127.0.0.1:3100/treino|
 ### Construido
 
 * [React.js](https://reactjs.org/)
