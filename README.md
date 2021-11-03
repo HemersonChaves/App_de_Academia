@@ -200,6 +200,10 @@ Dicionários de dados
 | GET | /treinador/{id}/clientes | http://127.0.0.1:3100/treinador/{id}/clientes |
 | GET | /treino | http://127.0.0.1:3100/treino |
 | POST | /treino  | http://127.0.0.1:3100/treino|
+
+### Mapa do site
+![alt text](https://github.com/HemersonChaves/App_de_Academia/blob/main/img/map.jpg?raw=true)
+
 ### Construido
 
 * [React.js](https://reactjs.org/)
