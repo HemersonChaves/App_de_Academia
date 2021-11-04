@@ -183,6 +183,10 @@ Dicionários de dados
     - grupo muscular *string*
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Diagrama entidade relacionamento
+![app_academia](https://user-images.githubusercontent.com/5596624/140405084-744ee5ea-61fd-43b5-a54a-f2287d4a90ba.png)
+
+
 ### Rotas API
 
 | Método | Path | URL |
