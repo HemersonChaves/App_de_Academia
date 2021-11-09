@@ -1,2 +1,2 @@
-# back-end_academia
-Api do app de academia
+# front-end_academia
+front-end do app de academia
